@@ -1,2 +1,12 @@
-# FoodFy
-Projeto desenvolvido no intuito de ser uma aplicação web de um site de receitas
+
+# Frontend Technologies
+- HTML
+- CSS
+- JavaScript
+- Nunjucks
+
+
+# Backend Technologies
+- PosgreSQL
+- Express
+- Node.js

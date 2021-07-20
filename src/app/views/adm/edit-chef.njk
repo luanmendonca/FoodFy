@@ -1,0 +1,55 @@
+{% extends "layoutadm.njk" %}
+
+{% block header %}
+            <div class="header-adm">
+                <div class="links-adm">
+                    <a href="/"><img src="/assets/logo-adm.png" alt=""></a>
+                    <div class="receita-chefs">
+                        <a href="/adm">RECEITAS</a>
+                        <a href="/adm/chefs" class="chefs-adm" >CHEFS</a>
+                    </div>
+                </div>
+            </div>
+            
+{% endblock %}
+
+{% block content %}
+    <div class="corpo-editchef">
+            <form class="create-form" action="/adm/chefs?_method=PUT" method="POST">
+        
+            <h1 class="h1-create">Editando chef</h1>
+            <button class="save-create" type="submit">Salvar chef</button>
+            
+
+            <div>
+                <h3 class="create-name">Nome</h3>
+                <input 
+                    type="text"
+                    name="name"
+                    value="{{chef.name}}"
+                    >
+            </div>
+            <div>
+                <h3 class="create-avatar">Avatar</h3>
+                <input 
+                    type="url"
+                    name="avatar"
+                    value="{{chef.avatar}}"
+                    >
+            </div>
+
+                <input 
+                    type="hidden" 
+                    name="id" 
+                    value="{{chef.id}}">
+                    
+            
+        </form>
+
+        <form id="form-delete-chef" action="/adm/chefs?_method=DELETE" method="post">
+            <input type="hidden" name="id" value="{{chef.id}}">
+            <button class="buttondelete" type="submit">Deletar</button>
+        </form>
+
+    </div>
+{% endblock %}

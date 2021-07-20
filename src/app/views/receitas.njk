@@ -1,0 +1,54 @@
+{% extends "layout.njk" %}
+    
+
+    {% block header %}
+            <div class="links">
+                <a class="logo-index" href="/"><img src="/assets/logo.png" alt=""></a>
+                <div class="sobrereceita">
+                    <a class="sobre" href="/sobre">Sobre</a>
+                    <a class="receita"href="/receitas">Receitas</a>
+                    <a class="chefs-usuario" href="/chefs">Chefs</a>
+                    <form class="filtro" action="/receitas" method="GET">
+                        <input 
+                            type="text"
+                            name="filter"
+                            placeholder="Buscar uma receita"
+                            value="{{filter}}"
+                        >
+                        <button type="submit">Buscar</button>
+
+                    </form>
+                </div>
+            </div>
+    {% endblock %}
+
+   {% block mid %}
+    <div class="corpo" id="novasreceitas-user">
+
+        <h1 class="recipes-name">Lista de receitas</h1>        
+        <section>
+            <div class="cards">
+                {% for prato in pratos %}
+                <a href="/receitas/{{prato.id}}" class="card" id=burger id2="Triplo bacon burger" id3="por Jorge Relato">
+                    <img src={{prato.image}} alt="{{prato.title}}">
+                    <h3>{{prato.title}}</h3>
+                    <p>por {{prato.chef_name}}</p>
+                </a>
+                {% endfor %}
+            </div>
+            
+
+        </section>
+
+        <div class="pagination"
+            data-page={{pagination.page}}
+            data-total={{pagination.total}}
+            data-filter={{filter}}
+        ></div>
+ 
+    </div> 
+ 
+
+
+
+ {% endblock %}

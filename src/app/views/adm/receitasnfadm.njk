@@ -1,0 +1,28 @@
+{% extends "layoutadm.njk" %}
+
+
+{% block content %}
+    <div class="admheader">
+        <a class="buttonnewrecipe" href="/adm/create">Nova receita</a>
+        <form class="filtro" action="/adm" method="GET">
+            <input 
+                type="text"
+                name="filter"
+                placeholder="Buscar uma receita"
+                value="{{filter}}"
+                >
+            <button type="submit">Buscar</button>
+
+        </form>
+    </div>                   
+    
+    
+    <div class="corpo" id="novasreceitas">
+        <h1 class="h1-adm">Gerenciar receitas</h1>
+        
+        <div class="error-message2"><h1>Ops... Receita nao encontrada !</h1></div>
+       
+    </div>
+ 
+
+{% endblock %}

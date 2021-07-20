@@ -1,0 +1,54 @@
+{% extends "layoutadm.njk" %}
+
+
+{% block content %}
+    <div class="admheader">
+        <a class="buttonnewrecipe" href="/adm/create">Nova receita</a>
+        <form class="filtro" action="/adm" method="GET">
+            <input 
+                type="text"
+                name="filter"
+                placeholder="Buscar uma receita"
+                value="{{filter}}"
+                >
+            <button type="submit">Buscar</button>
+
+        </form>
+    </div>                   
+    
+    
+    <div class="corpo" id="novasreceitas">
+        <h1 class="h1-adm">Gerenciar receitas</h1>
+        
+        <section>
+            <div class="cards-adm">
+                {% for prato in pratos %}
+                <div class="card-adm">
+                    <div>
+                        <img class="img-adm" src={{prato.image}} alt="{{prato.title}}">
+                    </div>
+                    
+                    <div class="second-adm">
+                        <h3>{{prato.title}}</h3>
+                        <p>por {{prato.chef_name}}</p>
+                        <a href="/adm/{{prato.id}}">Visualizar</a>
+                    </div>
+                    
+               </div>
+                
+                {% endfor %}
+            </div>
+            
+
+        </section>
+        
+        <div class="pagination"
+            data-page={{pagination.page}}
+            data-total={{pagination.total}}
+            data-filter={{filter}}
+        ></div>
+       
+    </div>
+ 
+
+{% endblock %}

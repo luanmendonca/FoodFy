@@ -1,0 +1,64 @@
+{% extends "layoutadm.njk" %}
+
+
+{% block content %}
+    
+<form class="form-create" method="POST" action="/adm">
+    
+    <div class="top-show">
+        <h3 class="h3-show">Receita: {{recipe.title}}</h3>
+        <a href="/adm/{{recipe.id}}/edit" class="button">Editar receita</a> 
+    </div>
+
+    </div>
+      
+            <div class="conteiner-foto">   
+                <section 
+                    class="avatar-create-show"  
+                    style="background: url({{recipe.image}}) no-repeat center center / cover ">
+                </section>
+            </div>    
+                                
+            <div class="author-show">
+                <div class="recipe-show">{{recipe.title}}</div>
+                <div class="author-por">por {{recipe.chef_name}}</div>                     
+             </div>
+
+
+
+        <div class="ingrediente-prep">
+            <div class="card-show" id="ingredients">
+                <div class="fc">Ingredientes</div>
+                <div class="ingredient-show">
+                    {% for ingredient in recipe.ingredients %}
+                    <div class="space-show-align">- {{ingredient}}</div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+
+    
+        <div class="ingrediente-prep">
+            <div class="card-create" id="preparation-show">
+                <div class="fc-show">Modo de preparo</div>
+                <div class="preparation-show">
+                    {% for prep in recipe.preparation %}
+                    <div class="space-show">- {{prep}}</div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+
+    
+        <div class="card-create" id="information-show"> 
+            <div class="fc1">Informações adicionais</div>
+            <div>{{recipe.information}}</div>
+            
+        </div>
+    </div>
+<div class="end"></div>
+
+</form>
+
+
+{% endblock %}

@@ -1,0 +1,68 @@
+{% extends "layout.njk" %}
+
+
+{% block header %}
+            <div class="links">
+                <a class="logo-index" href="/"><img src="/assets/logo.png" alt=""></a>
+                <div class="sobrereceita">
+                    <a class="sobre" href="/sobre">Sobre</a>
+                    <a class="receita"href="/receitas">Receitas</a>
+                    <a class="chefs-usuario" href="/chefs">Chefs</a>
+                    <form class="filtro" action="/index" method="GET">
+                        <input 
+                            type="text"
+                            name="filter"
+                            placeholder="Buscar uma receita"
+                            value="{{filter}}"
+                        >
+                        <button type="submit">Buscar</button>
+
+                    </form>
+                </div>
+            </div>
+{% endblock %}
+
+{% block mid %}
+    <div class="quadrado1">
+        <div class="descricao">
+            <h1>As melhores receitas</h1>
+            <p>Aprenda a construir os melhores pratos</p>
+            <p>com receitas criadas por profissionais</p>
+            <p>do mundo inteiro</p>
+        </div>
+        <img src="assets/chef.png" alt="chef">
+    </div>
+    <div class="corpo">
+        
+         <section class="cards-index">
+            <div class="cards">
+                {%for i in range(0, 6)%}
+                <div class="card" id={{pratos[i].image}} id2="{{pratos[i].title}}" id3="{{pratos[i].chef_name}}" id4="{{pratos[i].id}}">
+                    <img src={{pratos[i].image}} alt="{{pratos[i].title}}">
+                    <h3>{{pratos[i].title}}</h3>
+                    <p>por {{pratos[i].chef_name}}</p>
+                </div>
+                {% endfor %}
+                
+            </div>
+            
+
+        </section>
+       
+    </div>
+
+    <div class="modal-fora">
+        <div class="modal-dentro">
+            <img src="" alt="">
+            <h1></h1>
+            <p></p>
+            <div class="redirect">
+            <h2 class="close-modal">Fechar</h2>
+            <a class="redirecionando" href="">Receita</a>
+            
+            </div>
+        </div>
+
+    </div>
+
+    {% endblock %}

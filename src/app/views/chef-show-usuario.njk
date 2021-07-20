@@ -1,0 +1,43 @@
+{% extends "layout.njk" %}
+
+
+{% block mid %}
+    
+    <div class="content">
+
+        <div class="cima-chef">
+            <h1 class="chef-name">Chef: {{chef.name}}</h1>
+        </div>
+        <div>      
+                <img class="avatar-chef"src="{{chef.avatar}}" alt="avatar">
+                <h2 class="chef-name2">{{chef.name}}</h2>
+                <h4 class="quantidadeReceitas">{{chef.total_recipes}} 
+                    {% if chef.total_recipes == 1 %} Receita {% endif %}
+                    {% if chef.total_recipes != 1 %} Receitas {% endif %}    
+                </h4>
+   
+            
+            
+            <h3 class="tituloreceitas">Receitas</h3>
+            <div class="card-show1">
+                
+                {% for receita in receitas%}
+                    {% if receita.chef_id == chef.id %}
+                        <div class="receitaschefshow">
+                                <div>
+                                    <img class="img-receitachefshow" src={{receita.image}} alt="{{receita.title}}">
+                                </div>
+                                    
+                                <div class="second-show">
+                                    <h3>{{receita.title}}</h3>
+                                    <p>por {{receita.chef_name}}</p>
+                                    <a href="/receitas/{{receita.id}}">Visualizar</a>
+                                </div>
+                                    
+                        </div>
+                    {% endif %}
+                {% endfor %}
+            </div>
+        </div>
+</div>
+{% endblock %}

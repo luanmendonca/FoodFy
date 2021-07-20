@@ -1,0 +1,54 @@
+{% extends "layoutadm.njk" %}
+
+{% block header %}
+            
+            <div class="header-adm">
+                <div class="links-adm">
+                    <a href="/"><img src="/assets/logo-adm.png" alt=""></a>
+                    <div class="receita-chefs">
+                        <a href="/adm">RECEITAS</a>
+                        <a href="/adm/chefs" class="chefs-adm" >CHEFS</a>
+                    </div>
+                </div>
+            </div>
+{% endblock %}
+
+{% block content %}
+    
+    <div class="content">
+
+        <div class="top-chef">
+            <h1 class="chef-name">Chef: {{chef.name}}</h1>
+            <a class="buttonEditChef" href="/adm/chefs/{{chef.id}}/edit">Editar Chef</a>
+        </div>
+
+        <div>
+            <img class="avatar-chef"src="{{chef.avatar}}" alt="avatar">
+            <h2 class="chef-name2">{{chef.name}}</h2>
+            <h4 class="quantidadeReceitas">{{chef.total_recipes}} 
+                {% if chef.total_recipes == 1 %} Receita {% endif %}
+                {% if chef.total_recipes != 1 %} Receitas {% endif %}
+                </h4>
+            <h3 class="tituloreceitas">Receitas</h3>
+            <div class="card-show1">
+                
+                {% for recipe in recipes%}
+                    {% if recipe.chef_id == chef.id %}
+                        <div class="receitaschefshow">
+                                <div>
+                                    <img class="img-receitachefshow" src={{recipe.image}} alt="{{recipe.title}}">
+                                </div>
+                                    
+                                <div class="second-show">
+                                    <h3>{{recipe.title}}</h3>
+                                    <p>por {{recipe.chef_name}}</p>
+                                    <a href="/adm/{{recipe.id}}">Visualizar</a>
+                                </div>
+                                    
+                        </div>
+                    {% endif %}
+                {% endfor %}
+            </div>
+        </div>
+</div>
+{% endblock %}

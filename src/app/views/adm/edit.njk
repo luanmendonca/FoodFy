@@ -1,0 +1,123 @@
+{% extends "layoutadm.njk" %}
+
+
+{% block content %}
+
+<div class="form-create">
+
+<form method="POST" action="/adm?_method=PUT">
+    
+    <h3 class="h3-edit">Editando receita</h3>
+
+        <div class="card-create">  
+                <div>
+                   <h4>Nome da receita</h4> 
+                    <input 
+                        type="text"
+                        name="title"
+                        placeholder=" NOME DA RECEITA"
+                        value="{{recipe.title}}"
+                        >
+                </div>
+        </div>
+
+        <div class="card-create">
+                <div >
+                    <h4>Imagem da receita</h4>
+                    <input 
+                        type="url"
+                        name="image"
+                        placeholder=" LINK DA FOTO DA RECEITA"
+                        value="{{recipe.image}}"
+                        >
+                </div>
+        </div>
+
+        <div class="card-create">
+                <div>
+                    <h4>Chef</h4>
+                    <select name="chef">
+                        {% for chef in chefOptions %}
+                            <option value="{{chef.id}}" {% if chef.name == recipe.chef_name  %}selected{%endif%}}>{{chef.name}}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+        </div>
+
+    
+
+    <div class="ingrediente-prep">
+        <div class="card-create" id="ingredients">
+            <div class="fc">Ingredientes</div>
+            <div id="box1" class="ingredient">
+                
+                {% for ingredient in recipe.ingredients %}
+                <input 
+                        id="ingredient"
+                        type="text" 
+                        name="ingredients" 
+                        placeholder=" Exemplo: 2kg de farinha de trigo" 
+                        value="{{ingredient}}"
+                        />
+                
+                {% endfor %}
+
+                 
+            </div>
+        </div>
+        <div class="botao-instrucao">
+            <button type="button" id="add-ingredient" class="add-ingredient">Adicionar novo ingrediente</button>
+        </div>
+    </div>
+
+    
+    <div class="ingrediente-prep">
+        <div class="card-create" id="preparation">
+            <div class="fc">Modo de preparo</div>
+            <div id="box2" class="preparation">
+                
+                {% for step in recipe.preparation%}
+                <input 
+                    type="text" 
+                    name="preparation" 
+                    value="{{step}}" 
+                    placeholder=" Exemplo: Primeiro coloque a agua para ferver" />
+                {% endfor %}
+            </div>
+        </div>
+        <div class="botao-instrucao">
+        <button type="button" id="add-prep" class="add-prep">Adicionar novo passo</button>   
+        </div>
+    </div>
+
+    <div class="card-create"> 
+        <div class="fc">Informações adicionais</div>
+        <div>
+
+            <textarea 
+                name="information" 
+                cols="30" 
+                rows="10" 
+                placeholder="Exemplo: Carne bovina é melhor utilizada se for cozida imediatamente antes...">{{recipe.information}}</textarea>
+        </div>
+        
+    </div>
+    
+    <button class="buttonsave2" type="submit">Salvar receita</button>
+
+    <input 
+        type="hidden" 
+        name="id" 
+        value="{{recipe.id}}">
+
+</form>
+
+<form id="form-delete" action="/adm?_method=DELETE" method="post">
+    <input type="hidden" name="id" value="{{recipe.id}}">
+    <button class="buttondelete" type="submit">Deletar</button>
+</form>
+
+<div class="endcreate"></div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,41 @@
+{% extends "layoutadm.njk" %}
+
+{% block header %}
+            <div class="header-adm">
+                <div class="links-adm">
+                <a href="/"><img src="/assets/logo-adm.png" alt=""></a>
+                <div class="receita-chefs">
+                    <a href="/adm">RECEITAS</a>
+                    <a href="/adm/chefs" class="chefs-adm" >CHEFS</a>
+                </div>
+            </div>
+
+            </div>
+            
+{% endblock %}
+
+{% block content %}
+<form class="create-form" action="/adm/chefs" method="POST">
+    
+    <div class="top-createchef">
+        <h1 class="h1-create">Criando chef</h1>
+        <button class="save-create" type="submit">Salvar chef</button>
+    </div>
+    
+    
+    <div>
+        <h3 class="create-name">Nome</h3>
+        <input 
+            type="text"
+            name="name"
+            >
+    </div>
+    <div>
+        <h3 class="create-avatar">Avatar</h3>
+        <input 
+            type="url"
+            name="avatar"
+            >
+    </div>
+</form>
+{% endblock %}

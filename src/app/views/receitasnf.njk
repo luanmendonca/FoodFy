@@ -1,0 +1,37 @@
+{% extends "layout.njk" %}
+    
+
+    {% block header %}
+            <div class="links">
+                <a class="logo-index" href="/"><img src="/assets/logo.png" alt=""></a>
+                <div class="sobrereceita">
+                    <a class="sobre" href="/sobre">Sobre</a>
+                    <a class="receita"href="/receitas">Receitas</a>
+                    <a class="chefs-usuario" href="/chefs">Chefs</a>
+                    <form class="filtro" action="/receitas" method="GET">
+                        <input 
+                            type="text"
+                            name="filter"
+                            placeholder="Buscar uma receita"
+                            value="{{filter}}"
+                        >
+                        <button type="submit">Buscar</button>
+
+                    </form>
+                </div>
+            </div>
+    {% endblock %}
+
+   {% block mid %}
+    <div class="corpo" id="novasreceitas-user">
+
+        <h1 class="recipes-name">Lista de receitas</h1>        
+        
+        <div class="error-message2"><h1>Ops... Receita nao encontrada !</h1></div>
+ 
+    </div> 
+ 
+
+
+
+ {% endblock %}

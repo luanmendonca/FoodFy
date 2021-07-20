@@ -1,0 +1,67 @@
+{% extends "layoutadm.njk" %}
+
+{% block header %}
+            
+            <div class="header-adm">
+                <div class="links-adm">
+                    <a href="/"><img src="/assets/logo-adm.png" alt=""></a>
+                    <div class="receita-chefs">
+                        <a href="/adm">RECEITAS</a>
+                        <a href="/adm/chefs" class="chefs-adm" >CHEFS</a>
+                    </div>
+                </div>
+            </div>
+            
+{% endblock %}
+
+
+{% block content %}
+    <div class="admheader">
+        <a class="buttonnewrecipe" href="/adm/chefs/create">Novo chef</a> 
+        <form class="filtro" action="/adm/chefs" method="GET">
+            <input 
+                type="text"
+                name="filter"
+                placeholder="Buscar Chef"
+                value="{{filter}}"
+                >
+            <button type="submit">Buscar</button>
+
+        </form>
+    </div> 
+    
+    
+    
+    <div class="corpo-chefs" id="novoschefs">
+        <h1 class="h1-admchefs">Gerenciar chefs</h1>
+        
+        <section>
+            <div class="cards-chefs">
+                {% for chef in chefs %}
+                <div class="card-chefs">
+                    <div>
+                        <img class="img-chef" src={{chef.avatar}} alt="{{chef.name}}">
+                    </div>
+                    
+                    <div class="second-chef">
+                        <h3>{{chef.name}}</h3>
+                        <a href="/adm/chefs/{{chef.id}}">Visualizar</a>
+                    </div>
+                    
+               </div>
+                {% endfor %}
+            </div>
+            
+
+        </section>
+        
+        <div class="pagination"
+            data-page={{pagination.page}}
+            data-total={{pagination.total}}
+            data-filter={{filter}}
+        ></div>
+       
+    </div>
+ 
+
+{% endblock %}

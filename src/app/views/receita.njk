@@ -1,0 +1,42 @@
+{% extends "layout.njk" %}
+
+
+   {% block mid %}
+    
+    <div class="corpo" id="novasreceitas">
+    
+        <section>
+            <div class="card-receita-fora">        
+                <div class="card-receita" >
+                    <img src={{receita.image}} alt="{{receita.title}}">
+                    <h3>{{receita.title}}</h3>
+                    <p>por {{receita.chef_name}}</p>
+                    <div class="lermais-fora"><p class="lermais">Ler mais</p></div>
+                </div>
+    
+            </div>    
+        </section>  
+
+    <div class="modal-receita">
+        <div class="receita-ingredientes">
+            <h3>Ingredientes</h3>
+            <ul class="listinha">
+            {% for ingredient in receita.ingredients %}
+            <li><p class="ingrediente">{{ingredient}}</p></li>
+            {% endfor %}
+            </ul>
+        </div>
+        <h3>Modo de preparo</h3>
+        {% for prep in receita.preparation %}
+        <ul class="listinha-prep">
+        <li><p class="preparo">{{prep}}</p></li>
+        </ul>
+        {% endfor %}
+        <h3 class="infos">Informações adicionais</h3>
+        <p class="preparo">{{receita.information}}</p>
+        <div class="lermenos-fora"><p class="lermenos">Ler menos</p></div>
+    </div>
+
+
+    </div>
+ {% endblock %}
